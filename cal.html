@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Cal</title>
+	<style>
+		.title{ 
+		margin-bottom: 10px; 
+		text-align:center; 
+		width: 210px; 
+		color:black; 
+		border: solid black 2px; 
+		width: 30%;
+		font-size: 30px;
+		background-color: #38f1ff21;
+		} 
+		table{
+			height: 350px;
+			 width:30%;
+			  border:5px solid #0000007d;
+			  background-color: #38f1ff21;
+		}
+		td{
+			    border: none;
+		}
+		input[type="button"] 
+		{ 
+		background-color:#5ac9a294; 
+		color: black; 
+		width:100% ;
+		} 
+
+		input[type="text"] 
+		{ 
+		background-color:white; 
+		border: solid gray 2px; 
+		width:98%;
+		outline: none;
+		} 
+	</style>
+</head>
+
+<body>
+<script> 
+		//function that display value 
+		function dis(data) 
+		{ 
+			document.getElementById("result").value+=data ;
+		} 
+		
+		//function that evaluates the digit and return result 
+		function solve() 
+		{ 
+			var x = document.getElementById("result").value ;
+			
+			if ( x == "") {
+				document.getElementById("result").value = "" ;
+			}
+			else
+			{
+				if(x.includes("^")==true)
+				{
+				var res = x.split("^");
+				var y = Math.pow(res[0],res[1]);
+				}
+				else
+				{
+				var y = eval(x) ;
+				}	
+			document.getElementById("result").value = y ;
+			}
+		} /*functon end*/
+		
+		//function that clear the display 
+		function clr() 
+		{ 
+			document.getElementById("result").value = "" ;
+		} 
+		/*sin/cos/tan*/
+		function sin_fun(){
+				var s = document.getElementById("result").value;
+				var z = Math.sin(s);
+				document.getElementById("result").value = z ;
+		}
+		function cos_fun(){
+				var s = document.getElementById("result").value;
+				var z = Math.cos(s);
+				document.getElementById("result").value = z ;
+		}
+		function tan_fun(){
+				var s = document.getElementById("result").value;
+				var z = Math.tan(s);
+				document.getElementById("result").value = z ;
+		}
+		function fact_fun(){
+				var i, s, fact;
+					fact=1;
+					s = document.getElementById("result").value;
+					for(i=1; i<=s; i++)  
+					{
+					fact= fact*i;
+					}  
+					document.getElementById("result").value= fact;
+		}	
+		function root_fun(){
+			var r = document.getElementById("result").value;
+				var z = Math.sqrt(r);
+				document.getElementById("result").value = z ;
+		}
+		function log_fun(){
+			var l = document.getElementById("result").value;
+				var z = Math.log(l);
+				document.getElementById("result").value = z ;
+	
+		}
+		function exponent_fun(){
+			var e = document.getElementById("result").value;
+			var res = e.split("^");
+			var z = Math.pow(res[0],res[1]);
+			document.getElementById("result").value = z ;
+		}
+</script>
+
+<div align="center">
+	<div class = title>Calculator</div> 
+	<table> 
+		<tr> 
+			<td colspan="3"><input type="text" id="result"/></td> 
+			<!-- clr() function will call clr to clear all value -->
+			<td><input type="button" value="DEL" onclick="clr()"/> </td> 
+		</tr> 
+		<tr> 
+			<!-- create button and assign value to each button -->
+			<!-- dis("1") will call function dis to display value -->
+			<td><input type="button" value="1" onclick="dis('1')"/> </td> 
+			<td><input type="button" value="2" onclick="dis('2')"/> </td> 
+			<td><input type="button" value="3" onclick="dis('3')"/> </td> 
+			<td><input type="button" value="/" onclick="dis('/')"/> </td> 
+		</tr> 
+		<tr> 
+			<td><input type="button" value="4" onclick="dis('4')"/> </td> 
+			<td><input type="button" value="5" onclick="dis('5')"/> </td> 
+			<td><input type="button" value="6" onclick="dis('6')"/> </td> 
+			<td><input type="button" value="-" onclick="dis('-')"/> </td> 
+		</tr> 
+		<tr> 
+			<td><input type="button" value="7" onclick="dis('7')"/> </td> 
+			<td><input type="button" value="8" onclick="dis('8')"/> </td> 
+			<td><input type="button" value="9" onclick="dis('9')"/> </td> 
+			<td><input type="button" value="+" onclick="dis('+')"/> </td> 
+		</tr> 
+		<tr> 
+			<td><input type="button" value="sin" onclick="sin_fun()"/> </td> 
+			<td><input type="button" value="cos" onclick="cos_fun()"/> </td> 
+			<td><input type="button" value="tan" onclick="tan_fun()"/> </td> 
+			<td><input type="button" value="*" onclick="dis('*')"/> </td> 
+			
+		</tr> 
+		<tr> 
+			<td><input type="button" value="^" onclick="dis('^')"/> </td> 
+			<td><input type="button" value="log" onclick="log_fun()"/> </td> 
+			<td><input type="button" value="√" onclick="root_fun()"/> </td> 
+			<td><input type="button" value="%" onclick="dis('%')"/> </td> 
+			
+		</tr> 
+		<tr> 
+			<td><input type="button" value="." onclick="dis('.')"/> </td> 
+			<td><input type="button" value="0" onclick="dis('0')"/> </td> 
+			<td><input type="button" value="!" onclick="fact_fun('!')"/> </td> 
+			<!-- solve function call function solve to evaluate value -->
+			<td><input type="button" value="=" onclick="solve()"/> </td> 
+		</tr> 
+		
+	</table> 
+</div>
+</body>
+</html>
